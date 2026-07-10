@@ -1,0 +1,31 @@
+# open-murata-bms — one-command deployment.
+#
+#   1. cp config/config.example.yaml config.yaml   # then edit it (see notes below)
+#   2. docker compose up -d
+#   3. open http://<this-machine-ip>:8080          # the built-in dashboard (on by default)
+#
+# That's the whole "basic" setup — no MQTT broker, no Home Assistant needed. To also feed Home
+# Assistant, set integration.mqtt.enabled: true in config.yaml and point it at your broker.
+
+services:
+  omb:
+    build: .
+    # once images are published you can skip 'build' and use:
+    # image: ghcr.io/saxophone-k/open-murata-bms:latest
+    container_name: open-murata-bms
+    restart: unless-stopped
+
+    # ── Serial adapter (skip this whole block if you use a TCP gateway, e.g. EW11 / Waveshare) ──
+    # Map YOUR USB-RS485 adapter into the container. Find it with:  ls -l /dev/serial/by-id/
+    # It appears as /dev/ttyUSB0 inside the container, so set that as the serial port in config.yaml.
+    # (For full-speed polling, install packaging/99-ftdi-latency.rules on the HOST — see that file.)
+    devices:
+      - "/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_XXXXXXXX-if00-port0:/dev/ttyUSB0"
+
+    # ── Web dashboard port ──
+    ports:
+      - "8080:8080"
+
+    # ── Your config (git-ignored). Edit it before first run. ──
+    volumes:
+      - ./config.yaml:/config/config.yaml:ro

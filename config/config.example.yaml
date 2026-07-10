@@ -1,0 +1,72 @@
+# open-murata-bms — example configuration.
+# Copy this to  config/config.yaml  (git-ignored) and edit for YOUR install.
+# Nothing here is baked into the code; the software is entirely config-driven.
+#
+# Structure:  ESS (the whole system)  ->  banks (modules linked on one RS-485 link)  ->  modules.
+# A "bank" is however you physically wire a group of modules — a rack, an RV shelf, a cabinet.
+
+ess:
+  name: "My Battery System"
+  nominal_voltage: 48
+
+banks:
+  # ── One bank per RS-485 link. A small install (RV, single rack) has just one. ──
+  - id: bank1
+    transport:
+      type: rtu_over_tcp        # RS-485 RTU tunneled over TCP by an EW11 / Waveshare gateway
+      host: 192.168.50.11       # <-- your gateway's IP
+      port: 502
+    timeout_ms: 25
+    retries: 2
+    slave_id_range: { start: 1, end: 18 }
+
+  # ── Add more banks only if you have more RS-485 links (e.g. one gateway per rack/cabinet). ──
+  # - id: bank2
+  #   transport: { type: rtu_over_tcp, host: 192.168.50.12, port: 502 }
+  #   slave_id_range: { start: 1, end: 18 }
+
+  # ── Alternative: a stranger with ONE module on a USB-RS485 adapter (no gateway) ──
+  # - id: bench
+  #   transport:
+  #     type: modbus_rtu
+  #     serial: { port: /dev/ttyUSB0, baudrate: 230400, bytesize: 8, parity: E, stopbits: 1 }
+  #   slave_ids: [1]
+
+limits:
+  max_modules_per_bank: 32      # RS-485 tolerates ~32 unit loads per un-repeated segment
+
+poll:
+  interval_s: 0.5     # a full sweep of ~18 modules takes ~0.3 s (with the FTDI latency fix),
+                      # so 0.5 s gives ~2 full updates/sec. Raise it for big banks / slow links.
+
+integration:
+  # ── BASIC (default): the engine serves its own live dashboard — just open
+  #    http://<this-machine-ip>:8080 in any browser (phone too). No broker, no Home Assistant,
+  #    nothing else to install. Leave this on even if you also enable MQTT below. ──
+  web:
+    enabled: true
+    host: 0.0.0.0
+    port: 8080
+
+  # ── ADVANCED (opt-in): also publish to an MQTT broker for Home Assistant (dashboards,
+  #    automations, history). Flip enabled: true and point host at your broker. You can run
+  #    this AND the web dashboard at the same time. ──
+  mqtt:
+    enabled: false
+    host: 127.0.0.1
+    port: 1883
+    username: null
+    password: null
+    base_topic: open-murata-bms
+    discovery_prefix: homeassistant
+    ha_discovery: true
+
+safety:
+  allow_writes: false           # MASTER guard for all dangerous writes (see CLAUDE.md §1)
+  allow_fault_clear: false      # separate guard for maintenance fault-clear
+  thresholds:                   # software-supervisor protection (Phase 6); null = unset
+    cell_uv_mv: null
+    cell_ov_mv: null
+    soc_floor_pct: null
+
+log_level: INFO

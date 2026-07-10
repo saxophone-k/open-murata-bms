@@ -1,0 +1,14 @@
+# open-murata-bms — drop FTDI/PL2303 USB-serial latency timer 16 ms -> 1 ms.
+#
+# The default 16 ms timer makes request/response Modbus polling painfully slow (a full
+# 18-module sweep takes ~3.7 s instead of ~0.3 s). The engine also sets this at startup when
+# it has permission (running as root / in the container); install this rule if you run the
+# engine as a normal user so the kernel applies it automatically on plug-in.
+#
+# Install:
+#   sudo cp packaging/99-ftdi-latency.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+#
+# FTDI (e.g. FT232R) and Prolific PL2303 USB-serial bridges:
+ACTION=="add", SUBSYSTEM=="usb-serial", DRIVER=="ftdi_sio", ATTR{latency_timer}="1"
+ACTION=="add", SUBSYSTEM=="usb-serial", DRIVER=="pl2303", ATTR{latency_timer}="1"

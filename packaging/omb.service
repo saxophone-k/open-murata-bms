@@ -1,0 +1,32 @@
+# open-murata-bms — systemd unit. Polls the battery modules and publishes to MQTT/Home Assistant.
+#
+# Install (adjust User/paths for your system):
+#   sudo cp packaging/omb.service /etc/systemd/system/omb.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now omb.service
+#   journalctl -u omb.service -f          # watch it run
+#
+# Runs as a normal user (must be in the 'dialout' group to open the serial port). The FTDI
+# latency-timer fix needs root, so it runs as a privileged ExecStartPre ('+') before the main
+# process drops to User=; alternatively install packaging/99-ftdi-latency.rules.
+
+[Unit]
+Description=open-murata-bms — Murata battery monitor to MQTT/Home Assistant
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+SupplementaryGroups=dialout
+WorkingDirectory=/home/pi/open-murata-bms
+Environment=PYTHONIOENCODING=utf-8
+# Drop the USB-serial latency timer 16ms -> 1ms (privileged; runs before dropping to User=).
+ExecStartPre=+/bin/sh -c 'for d in /sys/bus/usb-serial/devices/ttyUSB*/latency_timer; do echo 1 > "$d" 2>/dev/null || true; done'
+ExecStart=/home/pi/open-murata-bms/.venv/bin/omb --config /home/pi/open-murata-bms/config.yaml
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+# Normalize line endings. Scripts and unit files must stay LF so they run on Linux (the Pi).
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary

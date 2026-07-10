@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-murata-bms"
+version = "0.0.1"
+description = "Open monitor for Murata IJ1101M battery modules over Modbus -> web dashboard / Home Assistant (MQTT)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "saxophone-k" }]
+keywords = ["murata", "fortelion", "modbus", "battery", "bms", "home-assistant", "raspberry-pi"]
+dependencies = [
+    "pymodbus>=3.6",
+    "pyserial>=3.5",     # pymodbus 3.x needs this for RS-485 serial; not pulled in automatically
+    "pyyaml>=6.0",
+    "pydantic>=2.6",
+    "paho-mqtt>=2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4", "mypy>=1.9"]
+
+[project.scripts]
+omb = "omb.app:main"
+omb-setup = "omb.setup:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# webdash.py embeds a self-contained HTML/CSS/JS page as a string literal; those lines are markup,
+# not code, and must not be wrapped.
+"src/omb/integration/webdash.py" = ["E501"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src"]
+ignore_missing_imports = true
