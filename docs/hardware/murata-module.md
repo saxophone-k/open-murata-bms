@@ -56,6 +56,8 @@ safe way to bench-test (no high current anywhere), because the BMS runs off your
 Connector: Mitsumi **CAM-A62B** (16-pin). Pins 1/2/11/12/13 are tied together (12 V); pins 3–7 are
 tied together (GND).
 
+![16-pin I/F connector pinout](../img/pinout.svg)
+
 | Pin | Name | Meaning |
 |----:|------|---------|
 | 1, 2 | 12V | 12 V power **in** (±1 V) — powers the BMS/comms |

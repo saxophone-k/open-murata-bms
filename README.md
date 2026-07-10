@@ -14,6 +14,8 @@ dashboard** (nothing else to install) or in **Home Assistant over MQTT**. Works 
 
 From zero to a live dashboard: shopping list, wiring, flashing the Pi, one-command install. Start there.
 
+![How it works: a Raspberry Pi polls a daisy chain of battery modules over RS-485](docs/img/daisy-chain.svg)
+
 ## Status
 
 **Monitoring works end-to-end and is validated on real hardware** (an 18-module bank: fresh
@@ -77,6 +79,7 @@ pytest                                               # runs against the simulato
 - **[Register map & encoding](docs/REGISTER-MAP.md)** — the full 125-register map, data types, and
   alarm/warning bit definitions.
 - **[Module hardware](docs/hardware/murata-module.md)** — pinout, ID switches, LEDs, wiring.
+- **[Home Assistant + MQTT](docs/HOME-ASSISTANT.md)** — optional: run Mosquitto (and HA) on the Pi.
 
 ## Vendor material
 

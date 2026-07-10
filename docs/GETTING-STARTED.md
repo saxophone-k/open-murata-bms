@@ -183,9 +183,8 @@ history graphs, automations, phone alerts), you need an **MQTT broker**.
 - **Already run Home Assistant?** Just re-run `omb-setup`, say **yes** to Home Assistant, and point
   it at your broker. Your modules appear automatically as devices.
 - **Don't run it yet?** The easy route is to install **Mosquitto** (the broker) — and optionally
-  **Home Assistant** — **on this same Pi**. A 4 GB Pi 4 can host all three. (A short how-to for this
-  will live in the docs; for now, any standard "install Mosquitto on Raspberry Pi" guide works, then
-  set the broker to `127.0.0.1` in `omb-setup`.)
+  **Home Assistant** — **on this same Pi**. A 4 GB Pi 4 can host all three. Step-by-step:
+  **[Home Assistant + MQTT on the same Pi](HOME-ASSISTANT.md)**.
 
 The web dashboard and Home Assistant can run **at the same time** — turning one on doesn't turn the
 other off.
