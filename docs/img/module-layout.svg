@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" font-family="system-ui, sans-serif">
+  <rect width="760" height="410" rx="10" fill="#ffffff"/>
+  <text x="28" y="34" font-size="19" font-weight="600" fill="#1b2430">What's on a module</text>
+  <text x="28" y="56" font-size="13" fill="#6b7480">The parts you touch: two B+ and two B− terminals, the two comm connectors, and the power/safety connector.</text>
+
+  <defs>
+    <marker id="m" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6b7480"/></marker>
+  </defs>
+
+  <!-- module body -->
+  <rect x="80" y="82" width="330" height="300" rx="10" fill="#e6e8ec" stroke="#3a4250" stroke-width="2"/>
+
+  <!-- B+ pair (top-left) -->
+  <rect x="100" y="102" width="48" height="48" rx="5" fill="#ffffff" stroke="#3a4250" stroke-width="2"/><text x="124" y="134" font-size="22" font-weight="700" fill="#1b2430" text-anchor="middle">+</text>
+  <rect x="152" y="102" width="48" height="48" rx="5" fill="#ffffff" stroke="#3a4250" stroke-width="2"/><text x="176" y="134" font-size="22" font-weight="700" fill="#1b2430" text-anchor="middle">+</text>
+  <!-- B- pair (top-right) -->
+  <rect x="290" y="102" width="48" height="48" rx="5" fill="#1b2430"/><text x="314" y="134" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">−</text>
+  <rect x="342" y="102" width="48" height="48" rx="5" fill="#1b2430"/><text x="366" y="134" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">−</text>
+
+  <!-- I/F connectors: two, side by side, horizontal -->
+  <rect x="120" y="204" width="120" height="28" rx="4" fill="#b8bcc4" stroke="#3a4250"/>
+  <rect x="250" y="204" width="120" height="28" rx="4" fill="#b8bcc4" stroke="#3a4250"/>
+
+  <!-- power / safety connector, centered below the I/F connectors -->
+  <rect x="185" y="268" width="120" height="46" rx="5" fill="#f5a623" stroke="#b5791a" stroke-width="2"/>
+  <text x="245" y="296" font-size="12" font-weight="600" fill="#5a3d08" text-anchor="middle">power / safety</text>
+
+  <!-- chassis ground stud (approx. — confirm location) -->
+  <circle cx="112" cy="352" r="11" fill="#6ea84f" stroke="#3a4250"/><text x="112" y="357" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">⏚</text>
+
+  <!-- callouts -->
+  <g font-size="13" fill="#1b2430">
+    <line x1="390" y1="126" x2="470" y2="112" stroke="#6b7480" stroke-width="1.5" marker-end="url(#m)"/>
+    <text x="476" y="108" font-weight="600">B+ (×2) / B− (×2)</text>
+    <text x="476" y="126" font-size="12" fill="#6b7480">the big battery power terminals</text>
+
+    <line x1="370" y1="218" x2="470" y2="200" stroke="#6b7480" stroke-width="1.5" marker-end="url(#m)"/>
+    <text x="476" y="196" font-weight="600">I/F (1) &amp; I/F (2)</text>
+    <text x="476" y="214" font-size="12" fill="#6b7480">two identical comm connectors, side by side —</text>
+    <text x="476" y="230" font-size="12" fill="#6b7480">daisy-chain module → module</text>
+
+    <line x1="305" y1="290" x2="470" y2="284" stroke="#6b7480" stroke-width="1.5" marker-end="url(#m)"/>
+    <text x="476" y="280" font-weight="600">Power / safety connector</text>
+    <text x="476" y="298" font-size="12" fill="#6b7480">pull it to kill the B+/B− output</text>
+    <text x="476" y="314" font-size="12" fill="#6b7480">AND reveal the ID switches</text>
+
+    <line x1="123" y1="352" x2="470" y2="352" stroke="#6b7480" stroke-width="1.5" marker-end="url(#m)"/>
+    <text x="476" y="348" font-weight="600">Chassis ground stud</text>
+    <text x="476" y="366" font-size="12" fill="#8a929e">(location approximate — confirm)</text>
+  </g>
+</svg>

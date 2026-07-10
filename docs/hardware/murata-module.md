@@ -14,6 +14,8 @@ Written for someone holding **one Murata module** who knows nothing about it. Or
 
 ## 1. What's on the module
 
+![What's on a module: B+/B− terminals, the two I/F comm connectors, and the power/safety connector](../img/module-layout.svg)
+
 Looking at the front face you have:
 
 | Item | What it is |
@@ -83,6 +85,8 @@ you **pull the power/safety connector**:
 
 - a **hex rotary switch** (positions **0–F**), plus
 - **DIP 1** and **DIP 2**.
+
+![Setting a module's ID: hex rotary switch plus DIP switches; DIP 4 = ON on the last module](../img/id-switches.svg)
 
 Together they select an ID from **1 to 64**: the rotary picks 1 of 16, and DIP1/DIP2 pick which
 bank of 16:

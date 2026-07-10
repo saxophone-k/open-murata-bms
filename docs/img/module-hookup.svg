@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" font-family="system-ui, sans-serif">
+  <rect width="820" height="440" rx="10" fill="#ffffff"/>
+  <text x="28" y="32" font-size="19" font-weight="600" fill="#1b2430">Basic hookup — one module + buck + Raspberry Pi</text>
+  <text x="28" y="54" font-size="13" fill="#6b7480">The buck taps the module's 48 V and makes 12 V; the Pi reads over RS-485. All of it meets at the I/F connector.</text>
+
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#3a4250"/></marker>
+  </defs>
+
+  <!-- MODULE (right) -->
+  <rect x="545" y="86" width="250" height="300" rx="12" fill="#e6e8ec" stroke="#3a4250" stroke-width="2"/>
+  <rect x="563" y="116" width="44" height="44" rx="5" fill="#ffffff" stroke="#3a4250" stroke-width="2"/><text x="585" y="147" font-size="20" font-weight="700" fill="#1b2430" text-anchor="middle">+</text>
+  <rect x="611" y="116" width="44" height="44" rx="5" fill="#ffffff" stroke="#3a4250" stroke-width="2"/><text x="633" y="147" font-size="20" font-weight="700" fill="#1b2430" text-anchor="middle">+</text>
+  <rect x="695" y="116" width="44" height="44" rx="5" fill="#1b2430"/><text x="717" y="147" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">−</text>
+  <rect x="743" y="116" width="44" height="44" rx="5" fill="#1b2430"/><text x="765" y="147" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">−</text>
+  <rect x="563" y="214" width="104" height="28" rx="4" fill="#b8bcc4" stroke="#3a4250"/>
+  <rect x="672" y="214" width="104" height="28" rx="4" fill="#b8bcc4" stroke="#3a4250"/>
+  <rect x="612" y="300" width="116" height="40" rx="5" fill="#f5a623" stroke="#b5791a" stroke-width="2"/><text x="670" y="324" font-size="11" font-weight="600" fill="#5a3d08" text-anchor="middle">power/safety IN</text>
+  <text x="670" y="372" font-size="12" fill="#6b7480" text-anchor="middle">Battery module</text>
+
+  <!-- BUCK -->
+  <rect x="70" y="94" width="170" height="64" rx="8" fill="#eef3fb" stroke="#2f7bd0" stroke-width="2"/>
+  <text x="155" y="122" font-size="14" font-weight="600" fill="#1b2430" text-anchor="middle">Buck converter</text>
+  <text x="155" y="142" font-size="12" fill="#6b7480" text-anchor="middle">48 V → 12 V</text>
+
+  <!-- PI -->
+  <rect x="70" y="252" width="200" height="92" rx="8" fill="#f3f5f8" stroke="#3a4250" stroke-width="2"/>
+  <text x="170" y="290" font-size="14" font-weight="600" fill="#1b2430" text-anchor="middle">Raspberry Pi</text>
+  <text x="170" y="312" font-size="12" fill="#6b7480" text-anchor="middle">+ FTDI USB-RS485</text>
+
+  <!-- WIRES -->
+  <path d="M665,114 C520,66 360,78 242,112" fill="none" stroke="#f5a623" stroke-width="4" marker-end="url(#ah)"/>
+  <path d="M150,158 C150,232 430,216 559,222" fill="none" stroke="#e05b49" stroke-width="4" marker-end="url(#ah)"/>
+  <path d="M200,158 C200,256 440,232 559,236" fill="none" stroke="#3a4250" stroke-width="4" marker-end="url(#ah)"/>
+  <path d="M270,292 C430,292 452,256 559,250" fill="none" stroke="#2f7bd0" stroke-width="4" marker-end="url(#ah)"/>
+
+  <!-- wire labels on white halos -->
+  <g font-size="12.5" font-weight="600" text-anchor="middle">
+    <rect x="388" y="70" width="120" height="18" rx="4" fill="#ffffff"/><text x="448" y="83" fill="#b5791a">48 V (from B+/B−)</text>
+    <rect x="300" y="188" width="42" height="18" rx="4" fill="#ffffff"/><text x="321" y="201" fill="#e05b49">12 V</text>
+    <rect x="300" y="256" width="46" height="18" rx="4" fill="#ffffff"/><text x="323" y="269" fill="#3a4250">GND</text>
+    <rect x="360" y="300" width="96" height="18" rx="4" fill="#ffffff"/><text x="408" y="313" fill="#2f7bd0">A / B data</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="12.5" fill="#1b2430">
+    <rect x="28" y="404" width="14" height="10" fill="#f5a623"/><text x="48" y="413">48 V tap</text>
+    <rect x="120" y="404" width="14" height="10" fill="#e05b49"/><text x="140" y="413">12 V</text>
+    <rect x="190" y="404" width="14" height="10" fill="#3a4250"/><text x="210" y="413">ground</text>
+    <rect x="270" y="404" width="14" height="10" fill="#2f7bd0"/><text x="290" y="413">RS-485 data</text>
+    <text x="400" y="413" fill="#8a929e">Pin-by-pin splice detail is in the pigtail diagram.</text>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 372" font-family="system-ui, sans-serif">
+  <rect width="760" height="372" rx="10" fill="#ffffff"/>
+  <text x="28" y="34" font-size="19" font-weight="600" fill="#1b2430">Setting a module's ID (address)</text>
+  <text x="28" y="56" font-size="13" fill="#6b7480">Behind the power/safety connector. Give every module a unique ID; set DIP 4 = ON on the last one.</text>
+
+  <!-- ROTARY housing -->
+  <rect x="54" y="86" width="192" height="192" rx="12" fill="#c9ced6" stroke="#3a4250" stroke-width="2"/>
+  <!-- dial -->
+  <circle cx="150" cy="182" r="52" fill="#f5a623" stroke="#b5791a" stroke-width="2"/>
+  <!-- arrow pointing LEFT to 0 -->
+  <path d="M192,182 L118,182" stroke="#9a2a1a" stroke-width="10" stroke-linecap="butt"/>
+  <path d="M126,164 L96,182 L126,200 Z" fill="#9a2a1a"/>
+  <!-- hex labels 0..F, 0 at 9 o'clock, clockwise -->
+  <g font-size="15" font-weight="600" fill="#1b2430" text-anchor="middle">
+    <text x="62" y="187">0</text><text x="69" y="151">1</text><text x="88" y="123">2</text><text x="116" y="104">3</text>
+    <text x="150" y="97">4</text><text x="184" y="104">5</text><text x="212" y="123">6</text><text x="231" y="151">7</text>
+    <text x="238" y="187">8</text><text x="231" y="221">9</text><text x="212" y="249">A</text><text x="184" y="268">B</text>
+    <text x="150" y="275">C</text><text x="116" y="268">D</text><text x="88" y="249">E</text><text x="69" y="221">F</text>
+  </g>
+  <text x="150" y="308" font-size="14" font-weight="600" fill="#1b2430" text-anchor="middle">Rotary switch</text>
+  <text x="150" y="328" font-size="12" fill="#6b7480" text-anchor="middle">arrow → your digit (0–F)</text>
+
+  <!-- DIP -->
+  <rect x="360" y="98" width="220" height="120" rx="8" fill="#2f7bd0"/>
+  <text x="470" y="90" font-size="13" fill="#6b7480" text-anchor="middle">ON ↑</text>
+  <g>
+    <!-- 1,2,3 = OFF (slider down); 4 = ON (slider up, red) -->
+    <rect x="384" y="120" width="30" height="76" rx="4" fill="#dfe4ea"/><rect x="391" y="162" width="16" height="26" fill="#ffffff" stroke="#3a4250"/>
+    <rect x="432" y="120" width="30" height="76" rx="4" fill="#dfe4ea"/><rect x="439" y="162" width="16" height="26" fill="#ffffff" stroke="#3a4250"/>
+    <rect x="480" y="120" width="30" height="76" rx="4" fill="#dfe4ea"/><rect x="487" y="162" width="16" height="26" fill="#ffffff" stroke="#3a4250"/>
+    <rect x="528" y="120" width="30" height="76" rx="4" fill="#ffd9d2"/><rect x="535" y="128" width="16" height="26" fill="#e05b49" stroke="#3a4250"/>
+    <path d="M543,200 L543,158" stroke="#e05b49" stroke-width="3"/><path d="M537,166 L543,154 L549,166 Z" fill="#e05b49"/>
+  </g>
+  <g font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">
+    <text x="399" y="212">1</text><text x="447" y="212">2</text><text x="495" y="212">3</text><text x="543" y="212">4</text>
+  </g>
+  <text x="470" y="308" font-size="14" font-weight="600" fill="#1b2430" text-anchor="middle">DIP switch</text>
+  <text x="470" y="328" font-size="12" fill="#6b7480" text-anchor="middle">DIP 1 &amp; 2 pick the range · DIP 4 = termination</text>
+
+  <text x="28" y="360" font-size="12.5" fill="#1b2430"><tspan font-weight="600">ID range (DIP1/DIP2):</tspan> OFF/OFF → 1–16 · ON/OFF → 17–32 · OFF/ON → 33–48 · ON/ON → 49–64. &#160;&#160;<tspan fill="#e05b49" font-weight="600">Last module: DIP 4 = ON.</tspan></text>
+</svg>

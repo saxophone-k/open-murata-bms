@@ -54,6 +54,8 @@ with a DIP switch on the last module, see Step 1).
 
 This software polls every module, adds them up into a bank, and shows you the bank and each module.
 
+![What's on a module: B+/B− terminals, the two I/F comm connectors, and the power/safety connector](img/module-layout.svg)
+
 ---
 
 ## Step 1 — Set each module's ID **before** you wire anything
@@ -69,6 +71,8 @@ You set it with physical switches on each module.
 3. Number them **1, 2, 3 … N** in the order they'll sit in the chain. Never reuse a number.
 4. On the **last module in the chain**, also set **DIP #4 = ON.** This turns on the built-in bus
    termination (that's why you don't need a resistor).
+
+![Setting a module's ID: hex rotary switch plus DIP switches; DIP 4 = ON on the last module](img/id-switches.svg)
 
 Write the ID on a piece of tape on each module. You'll thank yourself later.
 
@@ -96,6 +100,11 @@ connectors — one "in", one "out"):
 ![Daisy chain: a Raspberry Pi at the head, modules chained together with Mitsumi cables, DIP #4 ON on the last module](img/daisy-chain.svg)
 
 ### The "pigtail" — how the Pi and power join the chain
+
+The whole basic setup, at a glance — the buck taps the module's 48 V to make 12 V, and the Pi reads
+over RS-485; both meet at the module's I/F connector:
+
+![Basic hookup: a buck converter tapping the module 48 V for 12 V, and a Raspberry Pi reading over RS-485, meeting at the I/F connector](img/module-hookup.svg)
 
 The head of the chain needs to inject **12 V + ground** and tap the **RS-485 data pair (A/B)**. The
 easiest way (if you have a spare Mitsumi cable): **cut one cable in half** and use the end that plugs
